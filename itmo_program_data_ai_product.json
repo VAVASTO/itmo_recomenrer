@@ -1,0 +1,169 @@
+{
+    "program_name": "Управление ИИ-продуктами/AI Product",
+    "page_url": "https://abit.itmo.ru/program/master/ai_product",
+    "faculty": {
+        "name": "институт прикладных компьютерных наук",
+        "link": "https://itmo.ru/ru/viewfaculty/123/"
+    },
+    "description": {
+        "short": "Создавайте AI-продукты и технологии, которые меняют мир.",
+        "full": "Программа дает глубокие технические знания в области разработки систем искусственного интеллекта и навыки продуктового менеджмента. \nВы сможете создавать инновационные ИИ‑решения и выводить их на рынок. Широкий выбор предметов позволяет построить индивидуальную траекторию обучения и стать AI Product Manager, AI Project Manager или Product Data Analyst. Вас ждут реальные проекты для компаний уровня Альфа-Банк, очные воркшопы и онлайн-лекции. \nДля выпускной работы вы можете выбрать проект для компании-партнера, свой AI стартап или образовательный продукт на основе искусственного интеллекта."
+    },
+    "main_parameters": {
+        "study_format": "internal",
+        "duration": "2 года",
+        "language": "Русский",
+        "tuition_fee_rub_per_year": 599000,
+        "state_accreditation": true,
+        "military_training_center": true,
+        "additional_options": "СОП, Программа в сфере ИИ"
+    },
+    "career_prospects": "Выпускники программы смогут претендовать на позиции уровня Middle:\n\n– AI Product Manager\n\n– AI Project Manager\n\n– AI Product Data Analyst / AI Analyst\n\n– AI Product Lead\n\n\nСредний доход выпускников: от 150 до 400+ тысяч рублей в месяц через 1–3 года после окончания.",
+    "program_manager": {
+        "name": "Регина Абдрашитова",
+        "middle_name": "Ильдаровна",
+        "photo_url": "https://photo.itmo.su/avatar/14449270-1594-4ea8-95e6-3f4f5c3e043f/",
+        "degree": null,
+        "rank": null,
+        "positions": [
+            {
+                "department_name": "факультет технологического менеджмента и инноваций",
+                "department_link": "https://isu.ifmo.ru/pls/apex/f?p=2143:DEP:::NO::BUN_BUN_ID,STR_STR_ID,UBU_UBU_ID:90445,1,",
+                "position_name": "специалист по учебно-методической работе"
+            },
+            {
+                "department_name": "институт прикладных компьютерных наук",
+                "department_link": "https://isu.ifmo.ru/pls/apex/f?p=2143:DEP:::NO::BUN_BUN_ID,STR_STR_ID,UBU_UBU_ID:111773,1,",
+                "position_name": "специалист по учебно-методической работе"
+            }
+        ],
+        "contacts": {
+            "email": "aiproduct@itmo.ru",
+            "phone": "7(993)639-86-77"
+        }
+    },
+    "teaching_staff": [
+        {
+            "name": "Владислав Горбунов",
+            "middle_name": "Игоревич",
+            "photo_url": "https://photo.itmo.su/avatar/e4608cca-75b6-4e15-885c-92d294f3b900/",
+            "degree": null,
+            "rank": null,
+            "positions": [
+                {
+                    "department_name": "институт прикладных компьютерных наук",
+                    "department_link": "https://isu.ifmo.ru/pls/apex/f?p=2143:DEP:::NO::BUN_BUN_ID,STR_STR_ID,UBU_UBU_ID:111773,1,",
+                    "position_name": "старший преподаватель (квалификационная категория \"старший преподаватель\")"
+                }
+            ]
+        },
+        {
+            "name": "Илья Макаров",
+            "middle_name": "Андреевич",
+            "photo_url": "https://photo.itmo.su/avatar/350554b7-c7b8-4d54-a960-e93c8294e3b5/",
+            "degree": "PhD, технические науки",
+            "rank": null,
+            "positions": [
+                {
+                    "department_name": "физический факультет",
+                    "department_link": "https://isu.ifmo.ru/pls/apex/f?p=2143:DEP:::NO::BUN_BUN_ID,STR_STR_ID,UBU_UBU_ID:94847,1,",
+                    "position_name": "научный сотрудник"
+                },
+                {
+                    "department_name": "институт прикладных компьютерных наук",
+                    "department_link": "https://isu.ifmo.ru/pls/apex/f?p=2143:DEP:::NO::BUN_BUN_ID,STR_STR_ID,UBU_UBU_ID:111773,1,",
+                    "position_name": "доцент (квалификационная категория \"ординарный доцент\")"
+                }
+            ]
+        },
+        {
+            "name": "Кристина Желтова",
+            "middle_name": "Анатольевна",
+            "photo_url": "https://photo.itmo.su/avatar/602a98d8-9d89-435d-a5ca-10aab37f6945/",
+            "degree": null,
+            "rank": null,
+            "positions": [
+                {
+                    "department_name": "институт прикладных компьютерных наук",
+                    "department_link": "https://isu.ifmo.ru/pls/apex/f?p=2143:DEP:::NO::BUN_BUN_ID,STR_STR_ID,UBU_UBU_ID:111773,1,",
+                    "position_name": "преподаватель (квалификационная категория \"преподаватель практики\")"
+                }
+            ]
+        },
+        {
+            "name": "Марк Паненко",
+            "middle_name": "Вадимович",
+            "photo_url": "https://photo.itmo.su/avatar/8cd78142357596c1a759340ac3411551eadb0d3c/",
+            "degree": null,
+            "rank": null,
+            "positions": []
+        },
+        {
+            "name": "Валентин Малых",
+            "middle_name": "Андреевич",
+            "photo_url": null,
+            "degree": "кандидат технических наук",
+            "rank": null,
+            "positions": [
+                {
+                    "department_name": "высшая школа цифровой культуры",
+                    "department_link": "https://isu.ifmo.ru/pls/apex/f?p=2143:DEP:::NO::BUN_BUN_ID,STR_STR_ID,UBU_UBU_ID:98787,1,",
+                    "position_name": "доцент (квалификационная категория \"ординарный доцент\")"
+                },
+                {
+                    "department_name": "институт прикладных компьютерных наук",
+                    "department_link": "https://isu.ifmo.ru/pls/apex/f?p=2143:DEP:::NO::BUN_BUN_ID,STR_STR_ID,UBU_UBU_ID:111773,1,",
+                    "position_name": "доцент (квалификационная категория \"ординарный доцент\")"
+                }
+            ]
+        },
+        {
+            "name": "Андрей Кузнецов",
+            "middle_name": "Сергеевич",
+            "photo_url": "https://photo.itmo.su/avatar/a32ac3b2-7d5b-4a6b-a3f8-0aed8f30ae4f/",
+            "degree": "кандидат технических наук",
+            "rank": null,
+            "positions": [
+                {
+                    "department_name": "институт прикладных компьютерных наук",
+                    "department_link": "https://isu.ifmo.ru/pls/apex/f?p=2143:DEP:::NO::BUN_BUN_ID,STR_STR_ID,UBU_UBU_ID:111773,1,",
+                    "position_name": "преподаватель (квалификационная категория \"преподаватель практики\")"
+                }
+            ]
+        },
+        {
+            "name": "Андрей Кузнецов",
+            "middle_name": "Владимирович",
+            "photo_url": "https://photo.itmo.su/avatar/312c19db-acc5-48ee-a4c2-d6eef232cef8/",
+            "degree": "кандидат технических наук",
+            "rank": null,
+            "positions": [
+                {
+                    "department_name": "институт прикладных компьютерных наук",
+                    "department_link": "https://isu.ifmo.ru/pls/apex/f?p=2143:DEP:::NO::BUN_BUN_ID,STR_STR_ID,UBU_UBU_ID:111773,1,",
+                    "position_name": "доцент (квалификационная категория \"ординарный доцент\")"
+                }
+            ]
+        }
+    ],
+    "social_media": {
+        "vk": "https://vk.com/aitalenthub",
+        "site": "https://alfabank.ru/alfafuture/education/ma/itmo/",
+        "tg": "https://t.me/ai_product_itmo"
+    },
+    "fields_of_study": [
+        {
+            "code": "02.04.03",
+            "name": "Математическое обеспечение и администрирование информационных систем",
+            "admission_quotas": {
+                "budget_funded": 14,
+                "fee_based": 50,
+                "targeted": 0
+            }
+        }
+    ],
+    "partners": [
+        "https://abit.itmo.ru/partners/banking/alphabank.png",
+        "https://abit.itmo.ru/partners/universities-courses/alfafuture.png"
+    ]
+}
