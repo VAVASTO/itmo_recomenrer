@@ -17,7 +17,13 @@ class PDFProcessor:
         self._load_curriculum_data()
     
     def _load_curriculum_data(self):
-        """Load curriculum data from PDF files"""
+        """Load curriculum data from PDF files and JSON files"""
+        # Инициализируем json_program_data перед загрузкой
+        self.json_program_data = {}
+        
+        # Загружаем дополнительные данные из JSON файлов
+        self._load_json_program_data()
+        
         # Данные из PDF "Управление ИИ-продуктами"
         ai_product_curriculum = {
             "название": "Управление ИИ-продуктами/AI Product",
@@ -166,15 +172,156 @@ class PDFProcessor:
             "ai_product": ai_product_curriculum,
             "ai": ai_curriculum
         }
+        
+    
+    def _load_json_program_data(self):
+        """Load additional program data from JSON files"""
+        json_files = [
+            ("ai", "itmo_program_data_ai.json"),
+            ("ai_product", "itmo_program_data_ai_product.json")
+        ]
+        
+        print(f"DEBUG: Загрузка JSON файлов из директории: {self.pdf_dir}")
+        
+        for program_key, filename in json_files:
+            try:
+                filepath = os.path.join(self.pdf_dir, filename)
+                print(f"DEBUG: Проверяем файл: {filepath}")
+                
+                if os.path.exists(filepath):
+                    print(f"DEBUG: Файл {filename} найден, загружаем...")
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        self.json_program_data[program_key] = json.load(f)
+                    print(f"DEBUG: Файл {filename} успешно загружен для программы {program_key}")
+                else:
+                    print(f"DEBUG: Файл {filename} НЕ найден по пути {filepath}")
+                    
+            except Exception as e:
+                print(f"ERROR: Не удалось загрузить {filename}: {e}")
+        
+        print(f"DEBUG: Загружено JSON файлов: {len(self.json_program_data)}")
+        print(f"DEBUG: Ключи загруженных программ: {list(self.json_program_data.keys())}")
     
     def get_curriculum_text(self) -> str:
         """Get formatted curriculum text for AI model"""
-        text = "УЧЕБНЫЕ ПЛАНЫ ИТМО:\n\n"
+        print(f"DEBUG get_curriculum_text: Доступные JSON данные: {list(self.json_program_data.keys())}")
+        
+        text = "УЧЕБНЫЕ ПЛАНЫ И ИНФОРМАЦИЯ О ПРОГРАММАХ ИТМО:\n\n"
         
         for program_key, program_data in self.curriculum_data.items():
             text += f"=== {program_data['название']} ===\n"
             text += f"Описание: {program_data['описание']}\n\n"
             
+            print(f"DEBUG: Обрабатываем программу {program_key}")
+            print(f"DEBUG: JSON данные для {program_key} доступны: {program_key in self.json_program_data}")
+            
+            # Добавляем ПОЛНУЮ информацию из JSON файлов
+            if program_key in self.json_program_data:
+                print(f"DEBUG: Добавляем JSON данные для программы {program_key}")
+                json_data = self.json_program_data[program_key]
+                
+                text += f"📋 ПОЛНАЯ ИНФОРМАЦИЯ О ПРОГРАММЕ ИЗ JSON:\n"
+                text += f"• Название программы: {json_data.get('program_name', 'Не указано')}\n"
+                text += f"• URL страницы: {json_data.get('page_url', 'Не указано')}\n"
+                
+                # Факультет
+                if json_data.get('faculty'):
+                    faculty = json_data['faculty']
+                    text += f"• Факультет: {faculty.get('name', 'Не указано')}\n"
+                    text += f"  - Ссылка: {faculty.get('link', 'Не указано')}\n"
+                
+                # Описание программы
+                if json_data.get('description'):
+                    desc = json_data['description']
+                    text += f"• Краткое описание: {desc.get('short', 'Не указано')}\n"
+                    text += f"• Полное описание: {desc.get('full', 'Не указано')}\n"
+                
+                # Основные параметры
+                if json_data.get('main_parameters'):
+                    params = json_data['main_parameters']
+                    text += f"• Форма обучения: {params.get('study_format', 'Не указано')}\n"
+                    text += f"• Длительность: {params.get('duration', 'Не указано')}\n"
+                    text += f"• Язык обучения: {params.get('language', 'Не указано')}\n"
+                    text += f"• Стоимость: {params.get('tuition_fee_rub_per_year', 'Не указано')} руб/год\n"
+                    text += f"• Гос. аккредитация: {'Да' if params.get('state_accreditation') else 'Нет'}\n"
+                    text += f"• Военная кафедра: {'Да' if params.get('military_training_center') else 'Нет'}\n"
+                    text += f"• Дополнительные возможности: {params.get('additional_options', 'Не указано')}\n"
+                
+                # Карьерные перспективы
+                if json_data.get('career_prospects'):
+                    text += f"• Карьерные перспективы: {json_data['career_prospects']}\n"
+                
+                # Менеджер программы
+                if json_data.get('program_manager'):
+                    manager = json_data['program_manager']
+                    text += f"• Менеджер программы: {manager.get('name', '')} {manager.get('middle_name', '')}\n"
+                    if manager.get('degree'):
+                        text += f"  - Степень: {manager['degree']}\n"
+                    if manager.get('rank'):
+                        text += f"  - Звание: {manager['rank']}\n"
+                    if manager.get('positions'):
+                        text += f"  - Должности:\n"
+                        for pos in manager['positions']:
+                            text += f"    * {pos.get('position_name', '')} - {pos.get('department_name', '')}\n"
+                    if manager.get('contacts'):
+                        contacts = manager['contacts']
+                        text += f"  - Email: {contacts.get('email', 'Не указан')}\n"
+                        text += f"  - Телефон: {contacts.get('phone', 'Не указан')}\n"
+                
+                # Преподавательский состав
+                if json_data.get('teaching_staff'):
+                    text += f"• Преподавательский состав ({len(json_data['teaching_staff'])} человек):\n"
+                    for i, teacher in enumerate(json_data['teaching_staff'], 1):
+                        name = f"{teacher.get('name', '')} {teacher.get('middle_name', '')}"
+                        text += f"  {i}. {name.strip()}"
+                        if teacher.get('degree'):
+                            text += f" ({teacher['degree']})"
+                        if teacher.get('rank'):
+                            text += f", {teacher['rank']}"
+                        text += "\n"
+                        
+                        # Должности преподавателя
+                        if teacher.get('positions'):
+                            for position in teacher['positions']:
+                                if position.get('position_name'):
+                                    text += f"     - {position['position_name']}"
+                                    if position.get('department_name'):
+                                        text += f" ({position['department_name']})"
+                                    text += "\n"
+                
+                # Направления подготовки
+                if json_data.get('fields_of_study'):
+                    text += f"• Направления подготовки ({len(json_data['fields_of_study'])} направлений):\n"
+                    for field in json_data['fields_of_study']:
+                        text += f"  - {field.get('code', '')} {field.get('name', '')}\n"
+                        if field.get('admission_quotas'):
+                            quotas = field['admission_quotas']
+                            text += f"    Квоты приема: Бюджет - {quotas.get('budget_funded', 0)} мест, "
+                            text += f"Контракт - {quotas.get('fee_based', 0)} мест, "
+                            text += f"Целевые - {quotas.get('targeted', 0)} мест\n"
+                
+                # Социальные сети и контакты
+                if json_data.get('social_media'):
+                    social = json_data['social_media']
+                    text += f"• Социальные сети и сайты:\n"
+                    if social.get('site'):
+                        text += f"  - Официальный сайт: {social['site']}\n"
+                    if social.get('tg'):
+                        text += f"  - Telegram канал: {social['tg']}\n"
+                    if social.get('vk'):
+                        text += f"  - VKontakte: {social['vk']}\n"
+                
+                # Партнеры
+                if json_data.get('partners'):
+                    text += f"• Партнеры программы ({len(json_data['partners'])} партнеров):\n"
+                    for partner in json_data['partners']:
+                        # Извлекаем название партнера из URL изображения
+                        partner_name = partner.split('/')[-1].replace('.png', '').replace('.jpg', '').upper()
+                        text += f"  - {partner_name}\n"
+                
+                text += "\n"
+            
+            # Учебный план
             for block_name, block_data in program_data['блоки'].items():
                 text += f"--- {block_name} ---\n"
                 

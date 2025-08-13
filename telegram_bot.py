@@ -95,6 +95,25 @@ class ITMOCurriculumBot:
             
             logger.info(f"Sending request to YandexGPT for question: {user_question[:100]}...")
             
+            # ОТЛАДОЧНЫЙ ВЫВОД: печатаем системный промпт
+            system_message = messages[0] if messages and messages[0].get('role') == 'system' else None
+            if system_message:
+                print("\n" + "="*80)
+                print("СИСТЕМНЫЙ ПРОМПТ, ОТПРАВЛЯЕМЫЙ В YANDEXGPT:")
+                print("="*80)
+                print(system_message['text'])
+                print("="*80)
+                print(f"Длина системного промпта: {len(system_message['text'])} символов")
+                print("="*80 + "\n")
+            
+            # ОТЛАДОЧНЫЙ ВЫВОД: печатаем вопрос пользователя
+            user_message = messages[1] if len(messages) > 1 and messages[1].get('role') == 'user' else None
+            if user_message:
+                print("ВОПРОС ПОЛЬЗОВАТЕЛЯ:")
+                print("-" * 40)
+                print(user_message['text'])
+                print("-" * 40 + "\n")
+            
             # Вызов YandexGPT
             result = (
                 self.yandex_sdk.models.completions(YANDEX_CONFIG['model_name'])
